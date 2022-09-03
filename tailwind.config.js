@@ -2,6 +2,9 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        button: "url('/src/img/button.png')",
+      },
       width: {
         150: "150px",
         190: "190px",
@@ -48,6 +51,9 @@ module.exports = {
         cartNumBg: "#D1512D",
         primary: "#CEE5D0",
         buttonColor: "FFBF86",
+        cardOverlay: "rgba(256,256,256,0.4)",
+        descriptionColor: "#548078",
+        priceColor: "#16A596",
       },
     },
   },

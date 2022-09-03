@@ -1,6 +1,8 @@
 import React from "react"
 import Delivery from "../img/delivery.png"
 import HeroBg from "../img/heroBg.png"
+// import ButtonBg from "../img/button.png"
+import { ITEM_DATA } from "../api/foodApi"
 const HomeContainer = () => {
   return (
     <section
@@ -8,7 +10,7 @@ const HomeContainer = () => {
       id="home"
     >
       <div className="py-2 flex-1 flex flex-col items-start justify-center  gap-6">
-        <div className="flex items-center gap-2 justify-center bg-[#fac2d7] rounded-full px-4 py-1">
+        <div className="flex items-center gap-2 justify-center bg-[#fac2d7] rounded-3xl px-4 py-1">
           <p className="text-base text-[#f0508e] font-semibold">
             Bike Delivery
           </p>
@@ -22,7 +24,7 @@ const HomeContainer = () => {
         </div>
 
         <p className="text-[2.5rem] font-bold tracking-wide text-headingColor lg:text-[4.5rem]">
-          The Fastest Delivery in
+          The Fastest Delivery in{" "}
           <span className="text-[#f0508e] text-[3rem] lg:text-[5rem]">
             Your City
           </span>
@@ -39,13 +41,38 @@ const HomeContainer = () => {
           Order Now
         </button>
       </div>
-      <div className="py-2 flex-1 flex items-center">
+      <div className="py-2 flex-1 flex items-center relative">
         <img
           src={HeroBg}
           className="ml-auto lg:h-650 lg:w-auto h-420 w-full "
           alt="hero-bg"
         />
-        <div className="w-full h-full absolute flex items-center justify-center"></div>
+        <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center  py-4 flex-wrap gap-4">
+          {ITEM_DATA.map((item) => {
+            return (
+              <div
+                key={item.id}
+                className=" lg:w-[200px] p-4 bg-cardOverlay backdrop-blur-md rounded-xl flex flex-col items-center justify-center shadow-lg"
+              >
+                <img
+                  src={item.img}
+                  alt="products"
+                  className=" w-20 lg:w-40 -mt-10 lg:-mt-20"
+                />
+                <p className="text-textColor text-base lg:text-xl font-semibold mt-2 lg:mt-4">
+                  {item.title}
+                </p>
+                <p className="lg:text-sm text-[10px] text-descriptionColor font-semibold  my-1 lg:my-3 text-center ">
+                  {item.description}
+                </p>
+                <p className="text-md text-priceColor font-semibold ">
+                  <span className="text-md">Rs. </span>
+                  {item.price}
+                </p>
+              </div>
+            )
+          })}
+        </div>
       </div>
     </section>
   )

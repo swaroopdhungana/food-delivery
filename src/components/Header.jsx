@@ -51,9 +51,9 @@ const Header = () => {
             whileHover={{ scale: 1.1 }}
             src={Logo}
             alt="Logo"
-            className="w-8 object-cover"
+            className="w-full object-cover"
           />
-          <p className="text-headingColor text-xl font-bold">Goblin</p>
+          {/* <p className="text-headingColor text-xl font-bold">Goblin</p> */}
         </Link>
 
         <div className="flex items-center gap-8 ">
@@ -63,16 +63,16 @@ const Header = () => {
             exit={{ opacity: 0, x: 200 }}
             className="flex items-center gap-8"
           >
-            <li className="text-base text-textColor hover:text-headingColor cursor-pointer duration-100 transition-all ease-in-out ">
+            <li className="text-base text-textColor hover:text-[#67c089]  font-semibold cursor-pointer duration-100 transition-all ease-in-out ">
               Home
             </li>
-            <li className="text-base text-textColor hover:text-headingColor cursor-pointer  duration-100 transition-all ease-in-out">
+            <li className="text-base text-textColor hover:text-[#67c089] font-semibold cursor-pointer  duration-100 transition-all ease-in-out">
               Menu
             </li>
-            <li className="text-base text-textColor hover:text-headingColor cursor-pointer  duration-100 transition-all ease-in-out">
+            <li className="text-base text-textColor hover:text-[#67c089] font-semibold cursor-pointer  duration-100 transition-all ease-in-out">
               About Us
             </li>
-            <li className="text-base duration-100 transition-all ease-in-out text-textColor hover:text-headingColor cursor-pointer ">
+            <li className="text-base duration-100 transition-all ease-in-out font-semibold  text-textColor hover:text-[#67c089] cursor-pointer ">
               Service
             </li>
           </motion.ul>
@@ -142,9 +142,9 @@ const Header = () => {
             whileHover={{ scale: 1.1 }}
             src={Logo}
             alt="Logo"
-            className="w-8 object-cover"
+            className="w-25 ml-8 object-cover"
           />
-          <p className="text-headingColor text-xl font-bold">Goblin</p>
+          {/* <p className="text-headingColor text-xl font-bold">Goblin</p> */}
         </Link>
         <div className="relative">
           <motion.img
