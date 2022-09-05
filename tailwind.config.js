@@ -50,7 +50,7 @@ module.exports = {
         textColor: "#1A4D2E",
         cartNumBg: "#D1512D",
         primary: "#CEE5D0",
-        buttonColor: "FFBF86",
+        buttonColor: "#FFBF86",
         cardOverlay: "rgba(256,256,256,0.4)",
         descriptionColor: "#548078",
         priceColor: "#16A596",

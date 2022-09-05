@@ -47,7 +47,7 @@ const HomeContainer = () => {
           className="ml-auto lg:h-650 lg:w-auto h-420 w-full "
           alt="hero-bg"
         />
-        <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center  py-4 flex-wrap gap-4">
+        <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center lg:px-32 py-4 flex-wrap gap-4">
           {ITEM_DATA.map((item) => {
             return (
               <div
@@ -57,15 +57,15 @@ const HomeContainer = () => {
                 <img
                   src={item.img}
                   alt="products"
-                  className=" w-20 lg:w-40 -mt-10 lg:-mt-20"
+                  className="w-20 lg:w-40 -mt-10 lg:-mt-20"
                 />
                 <p className="text-textColor text-base lg:text-xl font-semibold mt-2 lg:mt-4">
                   {item.title}
                 </p>
-                <p className="lg:text-sm text-[10px] text-descriptionColor font-semibold  my-1 lg:my-3 text-center ">
+                <p className="lg:text-sm text-[10px] text-descriptionColor font-semibold my-1 lg:my-3 text-center ">
                   {item.description}
                 </p>
-                <p className="text-md text-priceColor font-semibold ">
+                <p className="text-sm text-priceColor font-semibold ">
                   <span className="text-md">Rs. </span>
                   {item.price}
                 </p>

@@ -33,3 +33,40 @@ export const ITEM_DATA = [
     price: 1800,
   },
 ]
+export const CATEGORIES = [
+  {
+    id: 1,
+    title: "Chicken",
+    urlParamTitle: "chicken",
+  },
+  {
+    id: 2,
+    title: "Curry",
+    urlParamTitle: "curry",
+  },
+  {
+    id: 3,
+    title: "Rice",
+    urlParamTitle: "rice",
+  },
+  {
+    id: 4,
+    title: "Fish",
+    urlParamTitle: "fish",
+  },
+  {
+    id: 5,
+    title: "Fruits",
+    urlParamTitle: "fruits",
+  },
+  {
+    id: 6,
+    title: "Icecreams",
+    urlParamTitle: "icecreams",
+  },
+  {
+    id: 7,
+    title: "Drinks",
+    urlParamTitle: "drinks",
+  },
+]
