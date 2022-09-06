@@ -1,6 +1,13 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
 import {
+  deleteObject,
+  getDownloadURL,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage"
+import { storage } from "../config/firebase.config"
+import {
   MdFastfood,
   MdCloudUpload,
   MdDelete,
@@ -20,8 +27,56 @@ const CreateContainer = () => {
   const [msg, setMsg] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
-  const uploadImage = () => {}
-  const deleteImage = () => {}
+  const uploadImage = (e) => {
+    setIsLoading(true)
+    const imageFile = e.target.files[0]
+    const storageRef = ref(storage, `Images/${Date.now()}-${imageFile.name}`)
+    const uploadTask = uploadBytesResumable(storageRef, imageFile)
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const uploadProgress =
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+      },
+      (err) => {
+        console.log(err)
+        setFields(true)
+        setMsg("Error While Uploading: " + err)
+        setAlertStatus("danger")
+        setTimeout(() => {
+          setFields(false)
+          setIsLoading(false)
+        }, 4000)
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadUrl) => {
+          setImageAsset(downloadUrl)
+          setIsLoading(false)
+          setFields(true)
+          setMsg("Uploaded successfully!")
+          setAlertStatus("success")
+          setTimeout(() => {
+            setFields(false)
+          }, 4000)
+        })
+      }
+    )
+  }
+  const deleteImage = () => {
+    setIsLoading(true)
+    const deleteRef = ref(storage, imageAsset)
+    deleteObject(deleteRef).then(() => {
+      setImageAsset(null)
+      setIsLoading(false)
+      setFields(true)
+      setMsg("Deleted successfully!")
+      setAlertStatus("success")
+      setTimeout(() => {
+        setFields(false)
+      }, 4000)
+    })
+  }
 
   const saveDetails = () => {}
   return (
@@ -35,7 +90,7 @@ const CreateContainer = () => {
             className={`w-full p-2 rounded-lg text-center text-lg font-semibold ${
               alertStatus === "danger"
                 ? "bg-red-400 text-red-400"
-                : "bg-emerald-400 text-emerald-800"
+                : "bg-pink-600 text-white"
             } `}
           >
             {msg}
@@ -114,7 +169,7 @@ const CreateContainer = () => {
                       className="absolute bottom-3 right-3 p-3 rounded-full bg-red-500 text-xl cursor-pointer outline-none hover:shadow-md duration-500 transistion-all ease-in-out active:scale-2"
                       onClick={deleteImage}
                     >
-                      <MdDelete className="text-textColor" />
+                      <MdDelete className="text-white" />
                     </button>
                   </div>
                 </>

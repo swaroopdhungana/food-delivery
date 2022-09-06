@@ -100,6 +100,9 @@ const Header = () => {
                 exit={{ opacity: 1, scale: 0.6 }}
                 className="w-40 bg-gray-50 shadow-xl rounded-lg flex flex-col absolute top-12 right-0 "
               >
+                <p className="px-4 py-2 flex items-center gap-3 cursor-pointer hover:bg-slate-100 transition-all duration-100 ease-in-out text-textColor text-base">
+                  Change Photo
+                </p>
                 {(user && user.email === "dhunganaswaroop@gmail.com") ||
                 "swaroop.dhungana@gmail.com" ? (
                   <Link to={"/createItem"}>
