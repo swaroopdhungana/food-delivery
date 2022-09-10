@@ -16,6 +16,7 @@ import {
 } from "react-icons/md"
 import { CATEGORIES } from "../api/foodApi"
 import Loader from "./Loader"
+import { saveItems } from "../util/firebaseFunction"
 const CreateContainer = () => {
   const [title, setTitle] = useState("")
   const [calories, setCalories] = useState("")
@@ -78,7 +79,57 @@ const CreateContainer = () => {
     })
   }
 
-  const saveDetails = () => {}
+  const saveDetails = () => {
+    setIsLoading(true)
+    try {
+      if (!title || !calories || !imageAsset || !price || !category) {
+        setFields(true)
+        setMsg("Fill out the form Properly!")
+        setAlertStatus("danger")
+        setTimeout(() => {
+          setFields(false)
+          setIsLoading(false)
+        }, 4000)
+      } else {
+        const data = {
+          id: `${Date.now()}`,
+          title,
+          imageURL: imageAsset,
+          category,
+          calories,
+          qty: 1,
+          price,
+        }
+        saveItems(data)
+        setIsLoading(false)
+        setFields(true)
+        setMsg("Data Saved Sucessfully!")
+        setAlertStatus("success")
+        setTimeout(() => {
+          setFields(false)
+        }, 4000)
+        clearData()
+      }
+    } catch (error) {
+      console.log(error)
+      setFields(true)
+      setMsg("Error While Uploading: ")
+      setAlertStatus("danger")
+      setTimeout(() => {
+        setFields(false)
+        setIsLoading(false)
+      }, 4000)
+    }
+  }
+
+  const clearData = () => {
+    setTitle("")
+    setCategory("")
+    setImageAsset(null)
+    setCalories("")
+    setCategory("")
+    setPrice("")
+  }
   return (
     <div className="w-full min-h-screen flex items-center justify-center">
       <div className="w-[90%] md:w-[75%] border border-[#77a898] shadow-sm rounded-lg p-4 flex flex-col items-center justify-center gap-4">
