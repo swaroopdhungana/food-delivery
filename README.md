@@ -1,10 +1,10 @@
 Full Stack Food Delivery App using:
-1.React
-2.Redux
-3.Talwind CSS
-4.React Icons
-5.Motion Frame
-(not Responsive)
+1. React
+2. Redux
+3. Talwind CSS
+4. React Icons
+5. Motion Frame
+(not Responsive yet)
 
 To install:
 1. Copy the project
