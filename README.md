@@ -8,6 +8,6 @@ Full Stack Food Delivery App using:
 
 To install:
 1. Copy the project
-2.Setup Firebase
+2. Setup Firebase
 3. yarn install
 4. yarn start
