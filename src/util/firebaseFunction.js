@@ -14,7 +14,7 @@ export const saveItems = async (data) => {
   })
 }
 
-export const getItems = async () => {
+export const getAllFoodItems = async () => {
   const items = await getDocs(
     query(collection(firestore, "foodItems"), orderBy("id", "desc"))
   )

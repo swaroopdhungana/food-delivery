@@ -4,14 +4,13 @@ export const actionType = {
 }
 
 const reducer = (state, action) => {
-  //   console.log(action)
   switch (action.type) {
-    case action.SET_USER:
+    case actionType.SET_USER:
       return {
         ...state,
         user: action.user,
       }
-    case action.SET_FOOD_ITEMS:
+    case actionType.SET_FOOD_ITEMS:
       return {
         ...state,
         foodItems: action.foodItems,

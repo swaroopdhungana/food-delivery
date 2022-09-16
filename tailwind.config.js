@@ -54,8 +54,9 @@ module.exports = {
         cardOverlay: "rgba(256,256,256,0.4)",
         descriptionColor: "#548078",
         priceColor: "#16A596",
+        rowBg: "#E8FFF9",
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
 }

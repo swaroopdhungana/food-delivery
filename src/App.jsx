@@ -2,15 +2,15 @@ import React from "react"
 import { Header, MainContainer, CreateContainer } from "./components"
 import { Route, Routes } from "react-router-dom"
 import { AnimatePresence } from "framer-motion"
-import { useStateValue } from "./context/StateProvider"
-import { getItems } from "./util/firebaseFunction"
 import { useEffect } from "react"
+import { useStateValue } from "./context/StateProvider"
+import { getAllFoodItems } from "./util/firebaseFunction"
 import { actionType } from "./context/reducer"
 const App = () => {
   const [{ foodItems }, dispatch] = useStateValue()
 
   const fetchData = async () => {
-    await getItems().then((data) => {
+    await getAllFoodItems().then((data) => {
       dispatch({
         type: actionType.SET_FOOD_ITEMS,
         foodItems: data,
@@ -20,6 +20,7 @@ const App = () => {
   useEffect(() => {
     fetchData()
   }, [])
+  // console.log(foodItems)
   return (
     <AnimatePresence exitBeforeEnter>
       <div className="w-screen h-auto flex flex-col bg-primary">
