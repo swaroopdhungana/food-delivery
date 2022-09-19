@@ -42,8 +42,7 @@ export const ITEM_DATA = [
     price: 1800,
   },
 ]
-const classNameForIcons =
-  "text-lg text-rowBg group-hover:text-textColor drop-shadow-md"
+const classNameForIcons = `text-3xl text-brown group-hover:text-textColor drop-shadow-md`
 export const CATEGORIES = [
   {
     id: 1,

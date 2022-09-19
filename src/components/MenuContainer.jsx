@@ -3,9 +3,12 @@ import { motion } from "framer-motion"
 import { IoFastFood } from "react-icons/io5"
 import { useState } from "react"
 import { CATEGORIES } from "../api/foodApi"
+import RowContainer from "./RowContainer"
+import { useStateValue } from "../context/StateProvider"
 
 const MenuContainer = () => {
   const [filter, setFilter] = useState("chicken")
+  const [{ foodItems }, dispatch] = useStateValue()
   return (
     <section className="w-full my-6" id="menu">
       <div className="w-full flex flex-col items-center justify-center">
@@ -18,19 +21,40 @@ const MenuContainer = () => {
             <motion.div
               key={category.id}
               whileTap={{ scale: 0.85 }}
-              className="group bg-cardOverlay hover:bg-secondaryColor w-35 min-w-[120px] h-32 cursor-pointer rounded-lg shadow-lg drop-shadow-xl flex flex-col gap-3 items-center justify-center duration-150 transistion-all ease-in-out"
+              className={`group ${
+                filter === category.urlParamTitle
+                  ? "bg-secondaryColor"
+                  : "bg-rowBg"
+              } hover:bg-secondaryColor w-35 min-w-[120px] h-32 cursor-pointer rounded-lg shadow-lg drop-shadow-xl flex flex-col gap-3 items-center justify-center `}
+              onClick={() => setFilter(category.urlParamTitle)}
             >
               <motion.div
                 whileHover={{ scale: 1.2 }}
-                className="w-10 h-10 rounded-full flex bg-secondaryColor group-hover:bg-rowBg  items-center justify-center"
+                className={`w-12 h-12 rounded-full flex ${
+                  filter === category.urlParamTitle
+                    ? " bg-rowBg"
+                    : " bg-secondaryColor"
+                } group-hover:bg-rowBg  items-center justify-center`}
               >
                 {category.icon}
               </motion.div>
-              <p className="text-textColor text-base group-hover:text-rowBg font-semibold first-letter:uppercase drop-shadow-lg">
+              <p
+                className={`${
+                  filter === category.urlParamTitle
+                    ? "text-rowBg"
+                    : "text-textColor"
+                } text-base group-hover:text-rowBg font-semibold first-letter:uppercase drop-shadow-lg`}
+              >
                 {category.urlParamTitle}
               </p>
             </motion.div>
           ))}
+        </div>
+        <div className="w-full">
+          <RowContainer
+            flag={false}
+            data={foodItems?.filter((n) => n.category === filter)}
+          />
         </div>
       </div>
     </section>
