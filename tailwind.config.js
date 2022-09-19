@@ -55,6 +55,7 @@ module.exports = {
         descriptionColor: "#548078",
         priceColor: "#16A596",
         rowBg: "#E8FFF9",
+        secondaryColor: "#f0508e",
       },
     },
   },
