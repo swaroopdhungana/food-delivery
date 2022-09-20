@@ -4,15 +4,15 @@ import { MdChevronLeft, MdChevronRight } from "react-icons/md"
 import { motion } from "framer-motion"
 import RowContainer from "./RowContainer"
 import { useStateValue } from "../context/StateProvider"
-import { useRef } from "react"
 import { useEffect } from "react"
 import MenuContainer from "./MenuContainer"
 import CartContainer from "./CartContainer"
 const MainContainer = () => {
-  const [{ foodItems }, dispatch] = useStateValue()
+  //eslint-disable-next-line
+  const [{ foodItems, cartShow }, dispatch] = useStateValue()
   const [scrollValue, setScrollValue] = useState(0)
 
-  useEffect(() => {}, [scrollValue])
+  useEffect(() => {}, [scrollValue, cartShow])
   // console.log(foodItems)
 
   return (
@@ -53,7 +53,8 @@ const MainContainer = () => {
         />
       </section>
       <MenuContainer />
-      <CartContainer />
+
+      {cartShow ? <CartContainer /> : ""}
     </div>
   )
 }

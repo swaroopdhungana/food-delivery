@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { MdAddShoppingCart } from "react-icons/md"
 import { motion } from "framer-motion"
-import { MdStar, MdStarHalf } from "react-icons/md"
+import { MdStar } from "react-icons/md"
 import { useRef } from "react"
 import NotFoundImg from "../img/NotFound.svg"
 const RowContainer = ({ flag, data, scrollValue }) => {
@@ -71,7 +71,7 @@ const RowContainer = ({ flag, data, scrollValue }) => {
         })
       ) : (
         <div className="w-full flex items-center justify-center flex-col">
-          <img src={NotFoundImg} className="h-340 " />
+          <img src={NotFoundImg} className="h-340 " alt="not found" />
           <p className="text-xl text-headingColor font-semibold my-2">
             Oops! Item is not Available
           </p>
